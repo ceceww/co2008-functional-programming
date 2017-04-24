@@ -149,8 +149,6 @@ tree2 = Branch ND (Data 3)
 tree3 = Branch tree1 tree2
 tree4 = Branch (Data 3) (Data 4)
 tree5 = Branch tree3 tree4
---tree6 = Branch (Branch (Data "ello" ) (Data "Hi") ) (Data "There")
-
 
 
 ---------------------------------------------------------------------
@@ -213,7 +211,7 @@ ext :: Tree (Person) -> [(Int, Person)]
 ext tree = ext2 (genlabel 1 tree)
 
 mapP :: Tree Person -> Tile
-mapP tree = map (preprint) (ext tree)
+mapP tree = map (preprint) (sort (<) (ext tree))
 
 printElements :: [String] -> IO()
 printElements = mapM_ putStrLn
@@ -237,9 +235,6 @@ tree = F "Anna" (F "Fer-Jan" (F "Willem" U U) (F "Nettie" U U)) (F "Paula" (F "M
 --print2Dtree :: Tree Person -> IO()
 
 --test2 = print2Dtree tree
-
-
-
 
 
 
